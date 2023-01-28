@@ -1,4 +1,4 @@
-/** Copyright (C) 2023 brian_d (https://github.com/briand-hub)
+/** Copyright (C) 2023 briand (https://github.com/briand-hub)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -15,6 +15,9 @@
 */
 
 #pragma once
+
+#ifndef BRIANDLIBESP32IDF_H
+#define BRIANDLIBESP32IDF_H
 
 #include <iostream>
 #include <fstream>
@@ -113,3 +116,5 @@ namespace Briand {
 	};
 
 }
+
+#endif

@@ -136,3 +136,13 @@ In fact, IDF components are always built in static .a files and can be used in o
 IDF Component may also have a KConfig file for sdkconfig but this is not discussed there. Maybe in future!
 
 More informations could be found here: https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/build-system.html
+
+### To-do list
+
+ - [x] STA methods
+ - [ ] AP methods
+ - [ ] AP+STA testing
+ - [ ] MAC Address change
+ - [ ] Linux/Windows porting like in older version
+ - [ ] Testing with IDF v5.1
+ - [ ] TCP server/client like in older version (really needed?)
