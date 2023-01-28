@@ -34,15 +34,18 @@ Includes utilities and simple, easy-to-use and ready-to-go objects to use ESP32 
 
 ## Use as source (easier)
 
-To be used as source, simply create a components/ subfolder in your project, use git to add this repo folder:
+To be used as source, simply create a *components/* subfolder in your project, use git to add this repo there:
 
 ```
-
+git clone https://github.com/briand-hub/LibEsp32IDF.git
+mv .\LibEsp32IDF\components\briand_libesp32idf\ .
 ```
+
+Remove the cloned repo, in your project *components* folder you should only have *briand_libesp32idf/* directory. That's all! Build your project and you're ready to go!
 
 Remember to use the right target (esp32, esp32s3 and so on). Project must be built with IDF v5.0 (or above). You can also check the example for easy get started tutorial.
 
-Of course, you can download and add .hxx and .cpp files under *components/briand_libesp32idf* in your main/ folder!
+Of course, you can also download and add .hxx and .cpp files under *components/briand_libesp32idf* in your main/ folder!
 
 ## Use as static library (.a)
 
@@ -133,5 +136,3 @@ In fact, IDF components are always built in static .a files and can be used in o
 IDF Component may also have a KConfig file for sdkconfig but this is not discussed there. Maybe in future!
 
 More informations could be found here: https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/build-system.html
-
-# Using the library as a IDF component static library or sources
