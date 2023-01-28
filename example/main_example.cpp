@@ -16,7 +16,13 @@
 
 #include <cstdio>
 
-#include "BriandLibEsp32IDF.hxx""
+// This line depends on where you have include files or sources (check CMakeLists.txt INCLUDE_DIRS "." line)
+#include "BriandLibEsp32IDF.hxx"
+
+// IF YOU ARE USING SOURCES: the line above should be correct and you do not need anything else
+// IF YOU ARE USING STATIC .a FILE: the line above may be correct (depends on where you have .hxx files)
+// but you have to add to your CMakeLists.txt file the requirement:
+// 
 
 using namespace std;
 

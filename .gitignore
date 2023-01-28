@@ -1,4 +1,9 @@
-build/
+build/*
+!build/esp-idf/
+build/esp-idf/*
+!build/esp-idf/briand_libesp32idf/
+build/esp-idf/briand_libesp32idf/*
+!build/esp-idf/briand_libesp32idf/libbriand_libesp32idf.a
 sdkconfig
 sdkconfig.old
 main/main.cpp
