@@ -263,10 +263,17 @@ void Briand::WifiManager::RegisterFreeRTOSEvents() {
 															&WifiManager::EventHandler,
 															NULL,
 															&instance_got_ip));
+		
+		// IP Event matching STATION lost IP will be handled
+		ESP_ERROR_CHECK(esp_event_handler_instance_register(IP_EVENT,
+															IP_EVENT_STA_LOST_IP,
+															&WifiManager::EventHandler,
+															NULL,
+															&instance_got_ip));
 
-		// TODO: sta lost ip, etc.
-
+		//
 		// TODO: ap started, station connected ....
+		//
 
 		ESP_LOGI(WifiManager::TAG, "Registered FreeRTOS events");
 
@@ -277,7 +284,7 @@ void Briand::WifiManager::RegisterFreeRTOSEvents() {
 void Briand::WifiManager::EventHandler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data) {
 	ESP_LOGV(WifiManager::TAG, "EventHandler called");
 
-	// All registered events will arrive here!
+	// All registered events will arrive there!
 
 	if (!WifiManager::StaStarted && event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
 		ESP_LOGI(WifiManager::TAG, "Caught event WIFI_EVENT / WIFI_EVENT_STA_START");
@@ -291,8 +298,8 @@ void Briand::WifiManager::EventHandler(void* arg, esp_event_base_t event_base, i
 		// This should not be done there after the first initialization!
 		WifiManager::StaStarted = true;
 	}
-	else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
-		ESP_LOGI(WifiManager::TAG, "Caught event WIFI_EVENT / WIFI_EVENT_STA_DISCONNECTED");
+	else if ((event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) || (event_base == IP_EVENT && event_id == IP_EVENT_STA_LOST_IP)) {
+		ESP_LOGI(WifiManager::TAG, "Caught event WIFI_EVENT / WIFI_EVENT_STA_DISCONNECTED or IP_EVENT / IP_EVENT_STA_LOST_IP (%ld)", event_id);
 
 		// If there are no remaining tentatives available, return with failure.
 		// But this point could also be reached when a Disconnect is called or when
